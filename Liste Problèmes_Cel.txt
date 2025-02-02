@@ -1,0 +1,99 @@
+1. Vérifier TOS ok		(templates.zerver.accounts_accept_terms)
+- http://zulipdev.com:9991/policies/terms (c'est le lien qui va avec donc faut mettre le notre)
+= href="{{ root_domain_url }}/policies/terms"
+
+
+
+2. Supprimer liens réseaux sociaux		(templates.zerver.accounts_accept_terms / templates.zerver.compare-education)
+(voir quoi faire avec templates.zerver.compare-education qui sert que à ça ?)
+
+
+3. Vérifier truc envoie mail (templates.zerver.accounts_accept_terms)
+faut peut-être envoyer un mail si un forum commence ou se termine…
+
+
+4. Chaque fichier qui utilise root_domain_url utilise peut-être un lien qu'il nous faut configurer / enlever !
+
+
+5. rechercher href avec contrôle F ? et voir que tout fonctionne ?
+
+
+6. <a href="mailto:{{ support_email }}">contact this Diapyr server's administrators</a>
+On met un support ???
+
+
+7. templates.zerver.documentation_main.html (ligne 14)
+<p>Your feedback helps us make Diapyr better for everyone! Please <a href="/help/contact-support">contact us</a> with questions, suggestions, and feature requests.</p>
+Faut faire une page help/contact-support ??? Ou c'est ailleurs dans le programme déjà ???
+
+
+8. templates.zerver.find_account.html (ligne 46)
+{% trans %}If you have also forgotten your password, you can <a href="/help/change-your-password">reset it</a>.{% endtrans %}
+Faut faire une page help/c... ??? Ou c'est ailleurs dans le programme déjà ???
+
+
+9. Pour les envoie de mails là c'est fictif sur le truc dev mais faut qu'on mette en réel non ?
+templates.zerver.qqch (j'ai oublié) / templates.zerver.register.html / templates.zerver.development.email_log.html
+
+
+10.  templates.zerver.find_account.html (ligne 42) / templates.zerver.invalid_realm / templates.zerver.no_spare_licenses
+the Diapyr Cloud organizations in which you have active accounts.
+BON… CLOUD ????
+
+
+11. templates.zerver.invalid_realm.html
+<a href="{{ root_domain_url }}/accounts/find/">get a list of your accounts</a>
+Faut faire une page ... ??? Ou c'est ailleurs dans le programme déjà ???
+
+
+12. TOUT LE templates.zerver.footer.html / templates.zerver.landing_nav.html
+C'est que des liens qu'on a pas pour Diapyr
+
+
+13. Si on remet des liens pourquoi pas annuler changement 3 (remettre liens doc)
+
+
+14. problème potentiel lien comme (7 8 11 12...)
+templates.zerver.login.html / templates.zerver.portico-hedr-dropdown.html / templates.zerver.realm_creation_form.html / templates.zerver.realm_redirect.html
+templates.zerver.register.html / templates.zerver.social_auth_select_email
+
+
+15. templates.zerver.portico-header.html (ligne 11)
+lien zulip
+
+ 
+16. TOUT templates.zerver.meta_tags
+Ce sont les images Zulip !
+
+
+17. templates.zerver.social_auth_select_email.html
+demande un truc à propos de GitHub ???
+
+
+18. templates.zerver.zilencer
+Pas très utile faudrait peutetre supprimer
+
+
+19. retirer templates.zerver.missing.md
+
+
+20. s'occuper templates.zerver.integrations
+J'ai l'impression qu'on peut juste supprimer
+
+
+20. s'occuper templates.zerver.emails
+
+
+
+21. JE CHANGE PAS LES NOMS DE CLASSES MEME SI C'EST DU ZULIP
+
+
+22. templates.zerver.development.dev_tools.html
+Bon je laisse tomber le fait de systématiquement changer Zulip en Diapyr pour ce qui est outils devs
+
+
+23. templates.zerver.config_error.html
+En partie pour se connecter avec des comptes autres (à retirer ?)
+
+
+inf. Faire un arbre de chaque page avec chaque lien pour voir si tout est bon à la fin !

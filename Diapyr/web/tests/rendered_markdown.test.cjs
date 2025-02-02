@@ -35,7 +35,8 @@ mock_esm("../src/settings_data", {
 const {set_realm} = zrequire("state_data");
 const {initialize_user_settings} = zrequire("user_settings");
 
-const realm = {};
+const REALM_EMPTY_TOPIC_DISPLAY_NAME = "general chat";
+const realm = {realm_empty_topic_display_name: REALM_EMPTY_TOPIC_DISPLAY_NAME};
 set_realm(realm);
 const user_settings = {};
 initialize_user_settings({user_settings});
@@ -76,8 +77,14 @@ const group_other = {
     id: 2,
     members: [cordelia.user_id],
 };
+const group_me_via_subgroup = {
+    name: "I am part of this group via a subgroup",
+    id: 3,
+    members: [],
+    direct_subgroup_ids: [group_me.id],
+};
 user_groups.initialize({
-    realm_user_groups: [group_me, group_other],
+    realm_user_groups: [group_me, group_other, group_me_via_subgroup],
 });
 
 const stream = {
@@ -136,7 +143,7 @@ const get_content_element = () => {
     $content.set_find_results(".topic-mention", $array([]));
     $content.set_find_results(".user-group-mention", $array([]));
     $content.set_find_results("a.stream", $array([]));
-    $content.set_find_results("a.stream-topic", $array([]));
+    $content.set_find_results("a.stream-topic, a.message-link", $array([]));
     $content.set_find_results("time", $array([]));
     $content.set_find_results("span.timestamp-error", $array([]));
     $content.set_find_results(".emoji", $array([]));
@@ -363,6 +370,33 @@ run_test("user-group-mention", () => {
     assert.equal($group_other.text(), `@${group_other.name}`);
 });
 
+run_test("user-group-mention", () => {
+    // Setup
+    const $content = get_content_element();
+    const $group_me_via_subgroup = $.create("user-group-mention(me_via_subgroup)");
+    $group_me_via_subgroup.set_find_results(".highlight", false);
+    $group_me_via_subgroup.attr("data-user-group-id", group_me_via_subgroup.id);
+    const $group_other = $.create("user-group-mention(other)");
+    $group_other.set_find_results(".highlight", false);
+    $group_other.attr("data-user-group-id", group_other.id);
+    $content.set_find_results(
+        ".user-group-mention",
+        $array([$group_me_via_subgroup, $group_other]),
+    );
+
+    // Initial asserts
+    assert.ok(!$group_me_via_subgroup.hasClass("user-mention-me"));
+    assert.equal($group_me_via_subgroup.text(), "never-been-set");
+    assert.equal($group_other.text(), "never-been-set");
+
+    rm.update_elements($content);
+
+    // Final asserts
+    assert.ok($group_me_via_subgroup.hasClass("user-mention-me"));
+    assert.equal($group_me_via_subgroup.text(), `@${group_me_via_subgroup.name}`);
+    assert.equal($group_other.text(), `@${group_other.name}`);
+});
+
 run_test("user-group-mention (error)", () => {
     const $content = get_content_element();
     const $group = $.create("user-group-mention(bogus)");
@@ -374,18 +408,33 @@ run_test("user-group-mention (error)", () => {
     assert.ok(!$group.hasClass("user-mention-me"));
 });
 
-run_test("stream-links", () => {
+run_test("stream-links", ({mock_template}) => {
     // Setup
     const $content = get_content_element();
     const $stream = $.create("a.stream");
     $stream.set_find_results(".highlight", false);
     $stream.attr("data-stream-id", stream.stream_id);
+
     const $stream_topic = $.create("a.stream-topic");
     $stream_topic.set_find_results(".highlight", false);
-    $stream_topic.attr("data-stream-id", stream.stream_id);
+    $stream_topic.attr(
+        "href",
+        `/#narrow/channel/${stream.stream_id}-random/topic/topic.20name.20.3E.20still.20the.20topic.20name`,
+    );
+    $stream_topic.replaceWith = noop;
+    $stream_topic.hasClass = (class_name) => class_name === "stream-topic";
     $stream_topic.text("#random > topic name > still the topic name");
+
     $content.set_find_results("a.stream", $array([$stream]));
-    $content.set_find_results("a.stream-topic", $array([$stream_topic]));
+    $content.set_find_results("a.stream-topic, a.message-link", $array([$stream_topic]));
+
+    let topic_link_context;
+    let topic_link_rendered_html;
+    mock_template("topic_link.hbs", true, (data, html) => {
+        topic_link_context = data;
+        topic_link_rendered_html = html;
+        return html;
+    });
 
     // Initial asserts
     assert.equal($stream.text(), "never-been-set");
@@ -395,7 +444,88 @@ run_test("stream-links", () => {
 
     // Final asserts
     assert.equal($stream.text(), `#${stream.name}`);
-    assert.equal($stream_topic.text(), `#${stream.name} > topic name > still the topic name`);
+    assert.deepEqual(topic_link_context, {
+        channel_id: stream.stream_id,
+        channel_name: stream.name,
+        topic_display_name: "topic name > still the topic name",
+        is_empty_string_topic: false,
+        href: `/#narrow/channel/${stream.stream_id}-random/topic/topic.20name.20.3E.20still.20the.20topic.20name`,
+    });
+    assert.ok(!topic_link_rendered_html.includes("empty-topic-display"));
+});
+
+run_test("topic-link (empty string topic)", ({mock_template}) => {
+    // Setup
+    const $content = get_content_element();
+    const $channel_topic = $.create("a.stream-topic(empty-string-topic)");
+    $channel_topic.set_find_results(".highlight", false);
+    $channel_topic.attr("href", `/#narrow/channel/${stream.stream_id}-random/topic/`);
+    $channel_topic.replaceWith = noop;
+    $channel_topic.hasClass = (class_name) => class_name === "stream-topic";
+    $channel_topic.html(`#random &gt; <em>${REALM_EMPTY_TOPIC_DISPLAY_NAME}</em>`);
+    $content.set_find_results("a.stream-topic, a.message-link", $array([$channel_topic]));
+
+    let topic_link_context;
+    let topic_link_rendered_html;
+    mock_template("topic_link.hbs", true, (data, html) => {
+        topic_link_context = data;
+        topic_link_rendered_html = html;
+        return html;
+    });
+
+    // Initial assert
+    assert.equal($channel_topic.html(), "#random &gt; <em>general chat</em>");
+
+    rm.update_elements($content);
+
+    // Final assert
+    assert.deepEqual(topic_link_context, {
+        channel_id: stream.stream_id,
+        channel_name: stream.name,
+        topic_display_name: `translated: ${REALM_EMPTY_TOPIC_DISPLAY_NAME}`,
+        is_empty_string_topic: true,
+        href: `/#narrow/channel/${stream.stream_id}-random/topic/`,
+    });
+    assert.ok(topic_link_rendered_html.includes("empty-topic-display"));
+});
+
+run_test("message-links", ({mock_template}) => {
+    // Setup
+    const $content = get_content_element();
+    const $channel_topic_message = $.create("a.message-link");
+    $channel_topic_message.set_find_results(".highlight", false);
+    $channel_topic_message.attr(
+        "href",
+        `/#narrow/channel/${stream.stream_id}-${stream.name}/topic//near/123`,
+    );
+    $channel_topic_message.replaceWith = noop;
+    $channel_topic_message.hasClass = (class_name) => class_name === "message-link";
+    $channel_topic_message.html(
+        `#${stream.name} &gt; <em>${REALM_EMPTY_TOPIC_DISPLAY_NAME}</em> @ 💬`,
+    );
+    $content.set_find_results("a.stream-topic, a.message-link", $array([$channel_topic_message]));
+
+    let channel_message_link_context;
+    let channel_message_link_rendered_html;
+    mock_template("channel_message_link.hbs", true, (data, html) => {
+        channel_message_link_context = data;
+        channel_message_link_rendered_html = html;
+        return html;
+    });
+
+    // Initial assert
+    assert.equal($channel_topic_message.html(), "#test &gt; <em>general chat</em> @ 💬");
+
+    rm.update_elements($content);
+
+    // Final asserts
+    assert.deepEqual(channel_message_link_context, {
+        channel_name: stream.name,
+        topic_display_name: `translated: ${REALM_EMPTY_TOPIC_DISPLAY_NAME}`,
+        is_empty_string_topic: true,
+        href: `/#narrow/channel/${stream.stream_id}-test/topic//near/123`,
+    });
+    assert.ok(channel_message_link_rendered_html.includes("empty-topic-display"));
 });
 
 run_test("timestamp without time", () => {

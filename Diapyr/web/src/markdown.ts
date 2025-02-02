@@ -1,12 +1,16 @@
-import {isValid} from "date-fns";
+import {getUnixTime, isValid} from "date-fns";
 import katex from "katex";
 import _ from "lodash";
 import assert from "minimalistic-assert";
 import type {Template} from "url-template";
 
 import * as fenced_code from "../shared/src/fenced_code.ts";
+import render_channel_message_link from "../templates/channel_message_link.hbs";
+import render_topic_link from "../templates/topic_link.hbs";
 import marked from "../third/marked/lib/marked.cjs";
 import type {LinkifierMatch, ParseOptions, RegExpOrStub} from "../third/marked/lib/marked.cjs";
+
+import * as util from "./util.ts";
 
 // This contains zulip's frontend Markdown implementation; see
 // docs/subsystems/markdown.md for docs on our Markdown syntax.  The other
@@ -58,7 +62,7 @@ export type MarkdownHelpers = {
 
     // user groups
     get_user_group_from_name: (name: string) => {id: number; name: string} | undefined;
-    is_member_of_user_group: (user_id: number, user_group_id: number) => boolean;
+    is_member_of_user_group: (user_group_id: number, user_id: number) => boolean;
 
     // stream hashes
     get_stream_by_name: (stream_name: string) => {stream_id: number; name: string} | undefined;
@@ -318,7 +322,7 @@ function parse_with_options(
                     display_text = "@" + group.name;
                     classes = "user-group-mention";
                     if (
-                        helper_config.is_member_of_user_group(helper_config.my_user_id(), group.id)
+                        helper_config.is_member_of_user_group(group.id, helper_config.my_user_id())
                     ) {
                         // Mentioned the current user's group.
                         mentioned_group = true;
@@ -580,7 +584,7 @@ function handleTimestamp(time_string: string): string {
     }
 
     const escaped_time = _.escape(time_string);
-    if (!isValid(timeobject)) {
+    if (!isValid(timeobject) || getUnixTime(timeobject) < 0) {
         // Unsupported time format: rerender accordingly.
 
         // We do not show an error on these formats in local echo because
@@ -637,14 +641,17 @@ function handleStreamTopic({
     stream_topic_hash: (stream_id: number, topic: string) => string;
 }): string | undefined {
     const stream = get_stream_by_name(stream_name);
-    if (stream === undefined || !topic) {
+    if (stream === undefined) {
         return undefined;
     }
     const href = stream_topic_hash(stream.stream_id, topic);
-    const text = `#${stream.name} > ${topic}`;
-    return `<a class="stream-topic" data-stream-id="${_.escape(
-        stream.stream_id.toString(),
-    )}" href="/${_.escape(href)}">${_.escape(text)}</a>`;
+    return render_topic_link({
+        channel_id: stream.stream_id,
+        channel_name: stream.name,
+        topic_display_name: util.get_final_topic_display_name(topic),
+        is_empty_string_topic: topic === "",
+        href,
+    });
 }
 
 function handleStreamTopicMessage({
@@ -666,12 +673,16 @@ function handleStreamTopicMessage({
     stream_topic_hash: (stream_id: number, topic: string) => string;
 }): string | undefined {
     const stream = get_stream_by_name(stream_name);
-    if (stream === undefined || !topic) {
+    if (stream === undefined) {
         return undefined;
     }
     const href = stream_topic_hash(stream.stream_id, topic) + "/near/" + message_id;
-    const text = `#${stream.name} > ${topic} @ 💬`;
-    return `<a class="message-link" href="/${_.escape(href)}">${_.escape(text)}</a>`;
+    return render_channel_message_link({
+        channel_name: stream.name,
+        topic_display_name: util.get_final_topic_display_name(topic),
+        is_empty_string_topic: topic === "",
+        href,
+    });
 }
 
 function handleTex(tex: string, fullmatch: string): string {

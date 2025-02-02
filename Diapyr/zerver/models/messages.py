@@ -157,6 +157,10 @@ class Message(AbstractMessage):
 
     DEFAULT_SELECT_RELATED = ["sender", "realm", "recipient", "sending_client"]
 
+    # Name to be used for the empty topic with clients that have not
+    # yet migrated to have the `empty_topic_name` client capability.
+    EMPTY_TOPIC_FALLBACK_NAME = "test general chat"
+
     class Meta:
         indexes = [
             GinIndex("search_tsvector", fastupdate=False, name="zerver_message_search_tsvector"),
@@ -663,6 +667,7 @@ class ArchivedUserMessage(AbstractUserMessage):
 class ImageAttachment(models.Model):
     realm = models.ForeignKey(Realm, on_delete=CASCADE)
     path_id = models.TextField(db_index=True, unique=True)
+    content_type = models.TextField(null=True)
 
     original_width_px = models.IntegerField()
     original_height_px = models.IntegerField()

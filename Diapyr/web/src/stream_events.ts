@@ -37,6 +37,7 @@ import * as sub_store from "./sub_store.ts";
 import type {StreamSubscription} from "./sub_store.ts";
 import {group_setting_value_schema} from "./types.ts";
 import * as unread_ui from "./unread_ui.ts";
+import * as user_group_edit from "./user_group_edit.ts";
 import * as user_profile from "./user_profile.ts";
 
 // In theory, this function should apply the account-level defaults,
@@ -86,10 +87,28 @@ export function update_property<P extends keyof UpdatableStreamProperties>(
         return;
     }
 
+    const deprecated_properties = ["is_announcement_only", "stream_post_policy"];
+    if (deprecated_properties.includes(property)) {
+        // Server sends events for updating "is_announcement_only" and
+        // "stream_post_policy" properties which are still used by
+        // legacy API clients. Since we do not have any client capabilities
+        // to control which clients should receive these events, these
+        // events are sent to all clients and we just do nothing on
+        // receiving events for these properties.
+        return;
+    }
+
     if (Object.keys(realm.server_supported_permission_settings.stream).includes(property)) {
         stream_settings_ui.update_stream_permission_group_setting(
             stream_permission_group_settings_schema.parse(property),
             sub,
+            group_setting_value_schema.parse(value),
+        );
+        const $elem = $(
+            `#id_group_permission_${CSS.escape(sub.stream_id.toString())}_${CSS.escape(property)}`,
+        );
+        user_group_edit.update_setting_in_group_permissions_panel(
+            $elem,
             group_setting_value_schema.parse(value),
         );
         return;
@@ -149,9 +168,6 @@ export function update_property<P extends keyof UpdatableStreamProperties>(
                 is_web_public: other_values.is_web_public,
             });
             compose_recipient.on_compose_select_recipient_update();
-        },
-        stream_post_policy(value) {
-            stream_settings_ui.update_stream_post_policy(sub, value);
         },
         message_retention_days(value) {
             stream_settings_ui.update_message_retention_setting(sub, value);
@@ -225,7 +241,7 @@ export function mark_subscribed(
     }
 
     // update navbar if necessary
-    message_view_header.maybe_rerender_title_area_for_stream(sub);
+    message_view_header.maybe_rerender_title_area_for_stream(sub.stream_id);
 
     if (stream_create.get_name() === sub.name) {
         // In this case, we just created this channel using this very
@@ -267,7 +283,7 @@ export function mark_unsubscribed(sub: StreamSubscription): void {
             stream_settings_ui.update_settings_for_unsubscribed(sub);
         }
         // update navbar if necessary
-        message_view_header.maybe_rerender_title_area_for_stream(sub);
+        message_view_header.maybe_rerender_title_area_for_stream(sub.stream_id);
     } else {
         // Already unsubscribed
         return;

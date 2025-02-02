@@ -809,7 +809,7 @@ class FileUploadTest(UploadSerializeMixin, ZulipTestCase):
 
         # Subscribed user who received the message should be able to view file
         self.login_user(cordelia)
-        with self.assert_database_query_count(7):
+        with self.assert_database_query_count(9):
             response = self.client_get(url)
             self.assertEqual(response.status_code, 200)
             self.assertEqual(response.getvalue(), b"zulip!")
@@ -870,7 +870,7 @@ class FileUploadTest(UploadSerializeMixin, ZulipTestCase):
 
         # Originally subscribed user should be able to view file
         self.login_user(polonius)
-        with self.assert_database_query_count(7):
+        with self.assert_database_query_count(9):
             response = self.client_get(url)
             self.assertEqual(response.status_code, 200)
             self.assertEqual(response.getvalue(), b"zulip!")
@@ -1203,10 +1203,24 @@ class AvatarTest(UploadSerializeMixin, ZulipTestCase):
             redirect_url = response["Location"]
             self.assertEqual(redirect_url, str(avatar_url(cordelia)) + "&foo=bar")
 
+        with self.settings(
+            ENABLE_GRAVATAR=False, GRAVATAR_REALM_OVERRIDE={get_realm("zulip").id: True}
+        ):
+            response = self.client_get("/avatar/cordelia@zulip.com", {"foo": "bar"})
+            redirect_url = response["Location"]
+            self.assertTrue("gravatar" in redirect_url)
+
         with self.settings(ENABLE_GRAVATAR=False):
             response = self.client_get("/avatar/cordelia@zulip.com", {"foo": "bar"})
             redirect_url = response["Location"]
             self.assertTrue(redirect_url.endswith(str(avatar_url(cordelia)) + "&foo=bar"))
+
+        with self.settings(
+            ENABLE_GRAVATAR=True, GRAVATAR_REALM_OVERRIDE={get_realm("zulip").id: False}
+        ):
+            response = self.client_get("/avatar/cordelia@zulip.com", {"foo": "bar"})
+            redirect_url = response["Location"]
+            self.assertTrue("gravatar" not in redirect_url)
 
     def test_get_settings_avatar(self) -> None:
         self.login("hamlet")

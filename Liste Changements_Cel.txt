@@ -1,0 +1,31 @@
+Liste Changements :
+
+1. Tous les noms Zulip en Diapyr	(en cours)
+(Faire une vérification avec contrôle f à la fin ou mieux ?)
+
+
+2. Toutes les images Zulip en Diapyr	(pas commencé)
+
+
+3. templates.zerver.accounts_home.html (ligne 45) / templates.zerver.login.html (ligne 58)
+Suppression ou remplacement au lieu de renvoyer vers de la doc qu'on a pas
+
+
+4. templates.zerver.create_realm.html (ligne 42)
+suppression possibilité d'importer des tchats (de Slack / Mattermost)
+
+
+5. templates.zerver.documentation_main.html (ligne 14)
+En commentaire parce que il faut un lien pour Diapyr
+
+
+6. templates.zerver.register.html (ligne 200 et plus tard)
+Je retire la partie comment vous avez trouvé Diapyr (pas envie de faire ça...)
+<div class="input-group input-box" id="how-realm-creator-found-zulip">
+
+
+7. templates.zerver.500.html (ligne 37)
+Suppression doc que faire si serveur down (c'était doc Zulip) 
+
+
+

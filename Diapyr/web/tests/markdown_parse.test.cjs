@@ -55,7 +55,7 @@ function get_user_group_from_name(name) {
     return user_group_map.get(name);
 }
 
-function is_member_of_user_group(user_id, user_group_id) {
+function is_member_of_user_group(user_group_id, user_id) {
     assert.equal(user_group_id, staff_group.id);
     assert.equal(user_id, my_id);
     return true;
@@ -196,7 +196,7 @@ run_test("stream links", () => {
 
     assert_parse(
         "#**social>lunch**",
-        '<p><a class="stream-topic" data-stream-id="301" href="/stream-301-topic-lunch">#social &gt; lunch</a></p>',
+        '<p><a class="stream-topic" data-stream-id="301" href="stream-301-topic-lunch">#social &gt; lunch</a></p>',
     );
 });
 
