@@ -1,0 +1,12 @@
+{#
+Mail sent to us when a company accepts the ToS for Diapyr Enterprise
+edition.
+#}
+
+Hello,
+
+{{ name }} just accepted the Diapyr Enterprise Terms of Service for {{ company }}.
+
+Cheers,
+
+Diapyr Legal Bot
