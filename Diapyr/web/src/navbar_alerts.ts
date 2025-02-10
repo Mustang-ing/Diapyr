@@ -181,7 +181,7 @@ const DESKTOP_NOTIFICATIONS_BANNER: AlertBanner = {
     intent: "brand",
     label: $t({
         defaultMessage:
-            "Zulip needs your permission to enable desktop notifications for important messages.",
+            "Diapyr needs your permission to enable desktop notifications for important messages.",
     }),
     buttons: [
         {
@@ -209,7 +209,7 @@ const CONFIGURE_OUTGOING_MAIL_BANNER: AlertBanner = {
     intent: "warning",
     label: $t({
         defaultMessage:
-            "Zulip needs to send email to confirm users' addresses and send notifications.",
+            "Diapyr needs to send email to confirm users' addresses and send notifications.",
     }),
     buttons: [
         {
@@ -227,7 +227,7 @@ const INSECURE_DESKTOP_APP_BANNER: AlertBanner = {
     intent: "danger",
     label: $t({
         defaultMessage:
-            "You are using an old version of the Zulip desktop app with known security bugs.",
+            "You are using an old version of the Diapyr desktop app with known security bugs.",
     }),
     buttons: [
         {
@@ -279,7 +279,7 @@ const SERVER_NEEDS_UPGRADE_BANNER: AlertBanner = {
     process: "server-needs-upgrade",
     intent: "danger",
     label: $t({
-        defaultMessage: "This Zulip server is running an old version and should be upgraded.",
+        defaultMessage: "This Diapyr server is running an old version and should be upgraded.",
     }),
     buttons: [
         {
@@ -377,7 +377,7 @@ const time_zone_update_offer_banner = (): AlertBanner => {
         label: $t(
             {
                 defaultMessage:
-                    "Your computer's time zone differs from your Zulip profile. Update your time zone to {browser_time_zone}?",
+                    "Your computer's time zone differs from your Diapyr profile. Update your time zone to {browser_time_zone}?",
             },
             {
                 browser_time_zone,
