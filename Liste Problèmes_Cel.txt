@@ -22,31 +22,31 @@ faut peut-être envoyer un mail si un forum commence ou se termine…
 On met un support ???
 
 
-7. templates.zerver.documentation_main.html (ligne 14)
+7. templates.zerver.documentation_main (ligne 14)
 <p>Your feedback helps us make Diapyr better for everyone! Please <a href="/help/contact-support">contact us</a> with questions, suggestions, and feature requests.</p>
 Faut faire une page help/contact-support ??? Ou c'est ailleurs dans le programme déjà ???
 
 
-8. templates.zerver.find_account.html (ligne 46)
+8. templates.zerver.find_account (ligne 46)
 {% trans %}If you have also forgotten your password, you can <a href="/help/change-your-password">reset it</a>.{% endtrans %}
 Faut faire une page help/c... ??? Ou c'est ailleurs dans le programme déjà ???
 
 
 9. Pour les envoie de mails là c'est fictif sur le truc dev mais faut qu'on mette en réel non ?
-templates.zerver.qqch (j'ai oublié) / templates.zerver.register.html / templates.zerver.development.email_log.html
+templates.zerver.qqch (j'ai oublié) / templates.zerver.register / templates.zerver.development.email_log
 
 
-10.  templates.zerver.find_account.html (ligne 42) / templates.zerver.invalid_realm / templates.zerver.no_spare_licenses
+10.  templates.zerver.find_account (ligne 42) / templates.zerver.invalid_realm / templates.zerver.no_spare_licenses
 the Diapyr Cloud organizations in which you have active accounts.
 BON… CLOUD ????
 
 
-11. templates.zerver.invalid_realm.html
+11. templates.zerver.invalid_realm
 <a href="{{ root_domain_url }}/accounts/find/">get a list of your accounts</a>
 Faut faire une page ... ??? Ou c'est ailleurs dans le programme déjà ???
 
 
-12. TOUT LE templates.zerver.footer.html / templates.zerver.landing_nav.html
+12. TOUT LE templates.zerver.footer / templates.zerver.landing_nav
 C'est que des liens qu'on a pas pour Diapyr
 
 
@@ -54,11 +54,11 @@ C'est que des liens qu'on a pas pour Diapyr
 
 
 14. problème potentiel lien comme (7 8 11 12...)
-templates.zerver.login.html / templates.zerver.portico-hedr-dropdown.html / templates.zerver.realm_creation_form.html / templates.zerver.realm_redirect.html
-templates.zerver.register.html / templates.zerver.social_auth_select_email
+templates.zerver.login / templates.zerver.portico-hedr-dropdown / templates.zerver.realm_creation_form / templates.zerver.realm_redirect
+templates.zerver.register / templates.zerver.social_auth_select_email / web.src.navbar_alerts
 
 
-15. templates.zerver.portico-header.html (ligne 11)
+15. templates.zerver.portico-header (ligne 11)
 lien zulip
 
  
@@ -66,7 +66,7 @@ lien zulip
 Ce sont les images Zulip !
 
 
-17. templates.zerver.social_auth_select_email.html
+17. templates.zerver.social_auth_select_email
 demande un truc à propos de GitHub ???
 
 
@@ -88,12 +88,15 @@ J'ai l'impression qu'on peut juste supprimer
 21. JE CHANGE PAS LES NOMS DE CLASSES MEME SI C'EST DU ZULIP
 
 
-22. templates.zerver.development.dev_tools.html
+22. templates.zerver.development.dev_tools
 Bon je laisse tomber le fait de systématiquement changer Zulip en Diapyr pour ce qui est outils devs
 
 
-23. templates.zerver.config_error.html
+23. templates.zerver.config_error
 En partie pour se connecter avec des comptes autres (à retirer ?)
+
+
+24. Bon pour les traductions c'est pas ouf pour toutes les langues où Zulip ne s'écrit pas Zulip, j'ai fait ce que j'ai pu mais bon...
 
 
 inf. Faire un arbre de chaque page avec chaque lien pour voir si tout est bon à la fin !

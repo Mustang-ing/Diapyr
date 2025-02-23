@@ -28,4 +28,7 @@ Je retire la partie comment vous avez trouvé Diapyr (pas envie de faire ça...)
 Suppression doc que faire si serveur down (c'était doc Zulip) 
 
 
+8. locale.ar.LC_MESSAGES.django.po (ar et d'autres)
+changement des premières lignes, pas censé faire de bug mais si il y en a ça peut venir de là
 
+9. suppression tout le contenu de footer.html mais pas le fichier (sinon bug)
