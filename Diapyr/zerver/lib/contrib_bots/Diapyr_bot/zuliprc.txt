@@ -1,0 +1,4 @@
+[api]
+email=diapyr-bot@zulipdev.com
+key=PmRfR71Gs7C54soGk8Uxls0QDmZp1Psi
+site=http://localhost:9991

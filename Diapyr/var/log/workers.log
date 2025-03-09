@@ -1,0 +1,81 @@
+2025-01-30 21:23:52.889 INFO [process_queue] 12 queue worker threads were launched
+2025-01-30 21:23:53.076 INFO [zerver.worker.thumbnail] Resizing to 840 x 560, from 50 x 50
+2025-01-30 21:23:53.119 INFO [zerver.worker.thumbnail] Uploading 18900 bytes to thumbnail/3/c7/zSEPhmyQSTn_hOFzYjW98ug8/checkbox.png/840x560.webp
+2025-01-30 21:23:53.212 INFO [zerver.worker.thumbnail] Processed 1 thumbnails (159ms)
+2025-01-30 21:30:43.012 INFO [process_queue] 12 queue worker threads were launched
+2025-01-30 21:31:54.574 INFO [process_queue] 12 queue worker threads were launched
+2025-01-30 21:49:09.512 INFO [zulip.send_email] Sending notify_new_login email to ['Zoe <ZOE@zulip.com>']
+2025-01-30 21:49:09.546 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-01-30 21:49:44.550 INFO [zerver.worker.deferred_work] Updating push bouncer with metadata on behalf of realm 2
+2025-01-30 21:49:44.759 INFO [zerver.worker.deferred_work] deferred_work processed push_bouncer_update_for_realm event (209ms)
+2025-01-30 22:05:02.580 INFO [zulip.send_email] Sending notify_new_login email to ['King Hamlet <hamlet@zulip.com>']
+2025-01-30 22:05:02.589 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-02 17:02:51.644 INFO [process_queue] 12 queue worker threads were launched
+2025-02-02 17:24:22.847 INFO [zulip.send_email] Sending notify_new_login email to ['Desdemona <desdemona@zulip.com>']
+2025-02-02 17:24:22.863 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-02 17:24:31.837 INFO [zulip.send_email] Sending notify_new_login email to ['"Cordelia, Lear\'s daughter" <cordelia@zulip.com>']
+2025-02-02 17:24:31.839 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-02 17:24:50.781 INFO [zerver.worker.deferred_work] Updating push bouncer with metadata on behalf of realm 2
+2025-02-02 17:24:51.234 INFO [zerver.worker.deferred_work] deferred_work processed push_bouncer_update_for_realm event (453ms)
+2025-02-02 17:25:38.606 INFO [zerver.worker.deferred_work] Updating push bouncer with metadata on behalf of realm 2
+2025-02-02 17:25:38.756 INFO [zerver.worker.deferred_work] deferred_work processed push_bouncer_update_for_realm event (150ms)
+2025-02-02 19:58:17.026 INFO [zulip.send_email] Sending notify_new_login email to ['aaron <AARON@zulip.com>']
+2025-02-02 19:58:17.034 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-02 21:04:45.749 INFO [zulip.send_email] Sending notify_new_login email to ['Zoe <ZOE@zulip.com>']
+2025-02-02 21:04:45.760 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-03 14:53:32.466 INFO [process_queue] 12 queue worker threads were launched
+2025-02-03 15:14:28.920 INFO [process_queue] 12 queue worker threads were launched
+2025-02-03 15:14:47.584 INFO [zulip.send_email] Sending notify_new_login email to ['Desdemona <desdemona@zulip.com>']
+2025-02-03 15:14:47.594 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-09 18:17:35.253 INFO [process_queue] 12 queue worker threads were launched
+2025-02-09 22:06:28.731 INFO [process_queue] 12 queue worker threads were launched
+2025-02-09 22:06:28.928 WARN [] Received 502 from push notification bouncer
+2025-02-10 00:41:49.001 INFO [process_queue] 12 queue worker threads were launched
+2025-02-10 02:42:51.939 INFO [process_queue] 12 queue worker threads were launched
+2025-02-10 02:45:36.295 INFO [zerver.worker.deferred_work] Marking messages as read for user 9, stream_recipient_ids [37]
+2025-02-10 02:45:36.341 INFO [zerver.worker.deferred_work] Marked 0 messages as read for user 9, stream_recipient_id 37
+2025-02-10 02:45:36.341 INFO [zerver.worker.deferred_work] deferred_work processed mark_stream_messages_as_read event (47ms)
+2025-02-10 13:52:29.254 INFO [process_queue] 12 queue worker threads were launched
+2025-02-10 13:52:29.459 WARN [] Received 502 from push notification bouncer
+2025-02-23 20:26:15.572 INFO [process_queue] 12 queue worker threads were launched
+2025-02-23 21:33:24.710 INFO [zerver.worker.deferred_work] Updating push bouncer with metadata on behalf of realm 2
+2025-02-23 21:33:25.150 INFO [zerver.worker.deferred_work] deferred_work processed push_bouncer_update_for_realm event (442ms)
+2025-02-23 21:33:42.660 INFO [zerver.worker.deferred_work] Updating push bouncer with metadata on behalf of realm 4
+2025-02-23 21:33:42.804 INFO [zerver.worker.deferred_work] deferred_work processed push_bouncer_update_for_realm event (144ms)
+2025-02-23 21:33:43.046 INFO [zerver.worker.deferred_work] Updating push bouncer with metadata on behalf of realm 4
+2025-02-23 21:33:43.117 INFO [zerver.worker.deferred_work] deferred_work processed push_bouncer_update_for_realm event (71ms)
+2025-02-23 21:35:24.013 INFO [zulip.send_email] Sending notify_new_login email to ['aaron <AARON@zulip.com>']
+2025-02-23 21:35:24.031 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-24 13:46:14.806 INFO [process_queue] 12 queue worker threads were launched
+2025-02-24 13:50:13.093 INFO [process_queue] 12 queue worker threads were launched
+2025-02-24 13:50:13.287 WARN [] Received 502 from push notification bouncer
+2025-02-24 13:51:49.751 INFO [zulip.send_email] Sending notify_new_login email to ['Zoe <ZOE@zulip.com>']
+2025-02-24 13:51:49.769 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-24 13:52:42.052 INFO [zerver.lib.push_notifications] Sending push notifications to mobile clients for user 12
+2025-02-24 13:52:42.062 INFO [zerver.lib.push_notifications] Skipping contacting the bouncer for user 12 because there are no registered devices
+2025-02-24 13:54:46.111 INFO [] Batch-processing 1 missedmessage_emails events for user 12
+2025-02-24 13:54:47.398 INFO [zulip.send_email] Sending missed_message email to ['"Othello, the Moor of Venice" <othello@zulip.com>']
+2025-02-24 13:54:47.404 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-24 14:00:22.938 INFO [process_queue] 12 queue worker threads were launched
+2025-02-24 14:00:31.408 INFO [zerver.lib.push_notifications] Sending push notifications to mobile clients for user 12
+2025-02-24 14:00:31.417 INFO [zerver.lib.push_notifications] Skipping contacting the bouncer for user 12 because there are no registered devices
+2025-02-24 14:00:46.850 INFO [zulip.send_email] Sending notify_new_login email to ['aaron <AARON@zulip.com>']
+2025-02-24 14:00:46.858 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-24 14:02:34.962 INFO [] Batch-processing 1 missedmessage_emails events for user 12
+2025-02-24 14:02:36.162 INFO [zulip.send_email] Sending missed_message email to ['"Othello, the Moor of Venice" <othello@zulip.com>']
+2025-02-24 14:02:36.165 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-02-24 14:03:38.029 INFO [process_queue] 12 queue worker threads were launched
+2025-02-24 14:03:38.178 WARN [] Received 502 from push notification bouncer
+2025-02-24 14:04:04.626 INFO [zulip.send_email] Sending notify_new_login email to ['Zoe <ZOE@zulip.com>']
+2025-02-24 14:04:04.636 INFO [] Emails sent in development are available at http://zulipdev.com:9991/emails
+2025-03-02 21:31:48.208 INFO [process_queue] 12 queue worker threads were launched
+2025-03-02 22:10:46.008 INFO [process_queue] 12 queue worker threads were launched
+2025-03-02 22:28:19.441 INFO [process_queue] 12 queue worker threads were launched
+2025-03-02 22:40:01.771 INFO [process_queue] 12 queue worker threads were launched
+2025-03-02 22:48:33.562 INFO [process_queue] 12 queue worker threads were launched
+2025-03-02 22:50:46.699 INFO [process_queue] 12 queue worker threads were launched
+2025-03-03 14:13:10.725 INFO [process_queue] 12 queue worker threads were launched
+2025-03-03 14:58:38.765 INFO [process_queue] 12 queue worker threads were launched
+2025-03-03 15:06:06.681 INFO [process_queue] 12 queue worker threads were launched
+2025-03-04 12:58:46.412 INFO [process_queue] 12 queue worker threads were launched
+2025-03-04 13:13:59.413 INFO [process_queue] 12 queue worker threads were launched

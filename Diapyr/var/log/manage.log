@@ -1,0 +1,223 @@
+2025-01-30 21:21:19,234: Ran ./manage.py purge_queue --all
+2025-01-30 21:21:23,058: Ran ./manage.py migrate --noinput
+2025-01-30 21:21:47,705: Ran ./manage.py get_migration_status --settings=zproject.settings --output=migration_status_dev
+2025-01-30 21:21:51,533: Ran ./manage.py createcachetable third_party_api_results
+2025-01-30 21:21:52,215: Ran ./manage.py populate_db -n100 --threads=1
+2025-01-30 21:22:02,607: Ran ./manage.py migrate --noinput
+2025-01-30 21:22:28,216: Ran ./manage.py get_migration_status --output=migration_status_test
+2025-01-30 21:22:33,191: Ran ./manage.py populate_db --test-suite -n30 --threads=1 --max-topics=3 --direct-message-groups=0 --personals=0 --percent-direct-message-groups=0 --percent-personals=0
+2025-01-30 21:22:39,798: Ran ./manage.py dumpdata zerver.UserProfile zerver.Stream zerver.Recipient zerver.Subscription zerver.Message zerver.DirectMessageGroup zerver.Realm zerver.UserMessage zerver.Client zerver.DefaultStream
+2025-01-30 21:22:43,097: Ran ./manage.py compilemessages '--ignore=*'
+2025-01-30 21:23:47,214: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-01-30 21:23:47,224: Ran ./manage.py deliver_scheduled_messages
+2025-01-30 21:23:47,238: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-01-30 21:23:47,255: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-01-30 21:23:47,284: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-01-30 21:23:48,181: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-01-30 21:23:50,395: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-01-30 21:30:34,178: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-01-30 21:30:34,182: Ran ./manage.py deliver_scheduled_messages
+2025-01-30 21:30:34,191: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-01-30 21:30:34,215: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-01-30 21:30:34,258: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-01-30 21:30:35,421: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-01-30 21:30:40,042: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-01-30 21:31:48,016: Ran ./manage.py deliver_scheduled_messages
+2025-01-30 21:31:48,019: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-01-30 21:31:48,040: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-01-30 21:31:48,045: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-01-30 21:31:48,070: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-01-30 21:31:49,061: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-01-30 21:31:52,156: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-02 17:02:45,825: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-02 17:02:45,830: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-02 17:02:45,862: Ran ./manage.py deliver_scheduled_messages
+2025-02-02 17:02:45,890: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-02 17:02:45,891: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-02 17:02:46,835: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-02 17:02:49,627: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-03 14:53:21,703: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-03 14:53:21,724: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-03 14:53:21,729: Ran ./manage.py deliver_scheduled_messages
+2025-02-03 14:53:21,750: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-03 14:53:21,845: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-03 14:53:23,228: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-03 14:53:29,417: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-03 15:14:20,774: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-03 15:14:20,811: Ran ./manage.py deliver_scheduled_messages
+2025-02-03 15:14:20,845: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-03 15:14:20,850: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-03 15:14:20,915: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-03 15:14:22,120: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-03 15:14:26,038: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-09 18:17:26,707: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-09 18:17:26,719: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-09 18:17:26,731: Ran ./manage.py deliver_scheduled_messages
+2025-02-09 18:17:26,746: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-09 18:17:26,830: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-09 18:17:27,578: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-09 18:17:32,550: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-09 22:03:15,892: Ran ./manage.py deliver_scheduled_messages
+2025-02-09 22:03:15,891: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-09 22:03:15,894: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-09 22:03:15,895: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-09 22:03:15,984: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-09 22:03:18,016: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-09 22:03:50,739: Ran ./manage.py deliver_scheduled_messages
+2025-02-09 22:03:50,747: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-09 22:03:50,755: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-09 22:03:50,775: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-09 22:03:50,812: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-09 22:03:52,625: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-09 22:05:06,511: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-09 22:05:06,511: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-09 22:05:06,511: Ran ./manage.py deliver_scheduled_messages
+2025-02-09 22:05:06,520: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-09 22:05:06,660: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-09 22:05:09,021: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-09 22:05:46,267: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-09 22:05:46,293: Ran ./manage.py deliver_scheduled_messages
+2025-02-09 22:05:46,298: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-09 22:05:46,317: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-09 22:05:46,429: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-09 22:05:48,329: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-09 22:06:24,313: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-10 00:41:19,331: Ran ./manage.py deliver_scheduled_messages
+2025-02-10 00:41:19,356: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-10 00:41:19,388: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-10 00:41:19,393: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-10 00:41:19,445: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-10 00:41:20,703: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-10 00:41:42,777: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-10 00:41:42,797: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-10 00:41:42,825: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-10 00:41:42,838: Ran ./manage.py deliver_scheduled_messages
+2025-02-10 00:41:42,914: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-10 00:41:43,602: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-10 00:41:46,300: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-10 02:42:47,846: Ran ./manage.py deliver_scheduled_messages
+2025-02-10 02:42:47,875: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-10 02:42:47,895: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-10 02:42:47,901: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-10 02:42:47,978: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-10 02:42:48,744: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-10 02:42:49,258: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-10 13:52:22,597: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-10 13:52:22,599: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-10 13:52:22,609: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-10 13:52:22,610: Ran ./manage.py deliver_scheduled_messages
+2025-02-10 13:52:22,684: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-10 13:52:24,122: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-10 13:52:28,328: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-23 20:26:08,130: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-23 20:26:08,145: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-23 20:26:08,146: Ran ./manage.py deliver_scheduled_messages
+2025-02-23 20:26:08,150: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-23 20:26:08,206: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-23 20:26:09,078: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-23 20:26:12,511: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-24 13:46:05,932: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-24 13:46:05,939: Ran ./manage.py deliver_scheduled_messages
+2025-02-24 13:46:05,940: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-24 13:46:05,965: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-24 13:46:06,035: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-24 13:46:07,385: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-24 13:46:12,439: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-24 13:50:05,519: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-24 13:50:05,580: Ran ./manage.py deliver_scheduled_messages
+2025-02-24 13:50:05,580: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-24 13:50:05,659: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-24 13:50:05,669: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-24 13:50:06,828: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-24 13:50:09,939: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-24 14:00:13,490: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-24 14:00:13,503: Ran ./manage.py deliver_scheduled_messages
+2025-02-24 14:00:13,506: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-24 14:00:13,527: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-24 14:00:13,594: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-24 14:00:14,896: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-24 14:00:18,515: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-02-24 14:03:30,983: Ran ./manage.py deliver_scheduled_messages
+2025-02-24 14:03:30,984: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-02-24 14:03:31,039: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-02-24 14:03:31,065: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-02-24 14:03:31,080: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-02-24 14:03:32,124: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-02-24 14:03:34,998: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-02 21:31:39,564: Ran ./manage.py deliver_scheduled_messages
+2025-03-02 21:31:39,578: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-02 21:31:39,587: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-02 21:31:39,589: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-02 21:31:39,640: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-02 21:31:40,741: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-02 21:31:44,814: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-02 22:10:37,084: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-02 22:10:37,102: Ran ./manage.py deliver_scheduled_messages
+2025-03-02 22:10:37,108: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-02 22:10:37,120: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-02 22:10:37,180: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-02 22:10:38,477: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-02 22:10:42,853: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-02 22:28:12,831: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-02 22:28:12,832: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-02 22:28:12,844: Ran ./manage.py deliver_scheduled_messages
+2025-03-02 22:28:12,874: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-02 22:28:12,893: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-02 22:28:13,812: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-02 22:28:16,631: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-02 22:39:55,226: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-02 22:39:55,239: Ran ./manage.py deliver_scheduled_messages
+2025-03-02 22:39:55,269: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-02 22:39:55,289: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-02 22:39:55,315: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-02 22:39:56,108: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-02 22:39:59,574: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-02 22:48:26,782: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-02 22:48:26,795: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-02 22:48:26,796: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-02 22:48:26,796: Ran ./manage.py deliver_scheduled_messages
+2025-03-02 22:48:26,884: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-02 22:48:27,777: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-02 22:48:31,165: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-02 22:50:41,699: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-02 22:50:41,701: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-02 22:50:41,711: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-02 22:50:41,726: Ran ./manage.py deliver_scheduled_messages
+2025-03-02 22:50:41,775: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-02 22:50:42,604: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-02 22:50:44,722: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-03 14:13:02,486: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-03 14:13:02,504: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-03 14:13:02,518: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-03 14:13:02,533: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-03 14:13:02,586: Ran ./manage.py deliver_scheduled_messages
+2025-03-03 14:13:03,776: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-03 14:13:07,420: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-03 14:58:30,473: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-03 14:58:30,515: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-03 14:58:30,518: Ran ./manage.py deliver_scheduled_messages
+2025-03-03 14:58:30,523: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-03 14:58:30,600: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-03 14:58:31,878: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-03 14:58:35,778: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-03 15:05:58,830: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-03 15:05:58,860: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-03 15:05:58,862: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-03 15:05:58,862: Ran ./manage.py deliver_scheduled_messages
+2025-03-03 15:05:59,000: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-03 15:05:59,997: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-03 15:06:03,443: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-04 12:58:35,858: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-04 12:58:35,879: Ran ./manage.py deliver_scheduled_messages
+2025-03-04 12:58:35,896: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-04 12:58:35,901: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-04 12:58:35,926: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-04 12:58:37,414: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-04 12:58:41,791: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback
+2025-03-04 13:13:50,401: Ran ./manage.py process_queue --all --settings=zproject.settings
+2025-03-04 13:13:50,429: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992
+2025-03-04 13:13:50,438: Ran ./manage.py deliver_scheduled_messages
+2025-03-04 13:13:50,479: Ran ./manage.py runtusd 9996 http://localhost:9992/api/internal/tusd
+2025-03-04 13:13:50,557: Ran ./manage.py runtornado --autoreload --immediate-reloads --settings=zproject.settings 127.0.0.1:9993
+2025-03-04 13:13:51,701: Ran ./manage.py rundjangoserver --settings=zproject.settings 127.0.0.1:9992 --traceback
+2025-03-04 13:13:55,299: Ran ./manage.py process_queue --all --settings=zproject.settings --traceback

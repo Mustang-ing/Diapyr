@@ -1,0 +1,2 @@
+2025-02-02 17:26:45.133 INFO [zulip.auth.email] Authentication attempt from 127.0.0.1: subdomain=zulip;username=gre@greg;outcome=failed;return_data={}
+2025-02-24 14:01:42.083 INFO [zulip.auth.saml] /login/saml/ : Bad idp param: KeyError: 'IDP must contain x509cert or x509certMulti'.

@@ -1,0 +1,116 @@
+2025-02-02 17:26:08.071 ERR  [django.request] Internal Server Error: /accounts/login/social/oidc
+2025-02-02 17:26:13.380 ERR  [django.request] Internal Server Error: /accounts/login/social/oidc
+2025-02-02 17:26:20.868 ERR  [django.request] Internal Server Error: /accounts/login/social/google
+2025-02-09 22:06:28.928 WARN [] Received 502 from push notification bouncer
+2025-02-10 13:52:29.459 WARN [] Received 502 from push notification bouncer
+2025-02-23 20:55:42.294 ERR  [django.request] Internal Server Error: /devlogin/
+Traceback (most recent call last):
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/backends/jinja2.py", line 74, in render
+    return self.template.render(context)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pfff/zulip/templates/zerver/development/dev_login.html", line 2, in top-level template code
+    {% set entrypoint = "dev-login" %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 2, in top-level template code
+    {% set entrypoint = entrypoint|default("portico") %}
+  File "/home/pfff/zulip/templates/zerver/base.html", line 45, in top-level template code
+    {% block content %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 25, in block 'content'
+    {% include 'zerver/footer.html' %}
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/loaders.py", line 209, in get_source
+    raise TemplateNotFound(
+jinja2.exceptions.TemplateNotFound: 'zerver/footer.html' not found in search paths: '/home/pfff/zulip/templates', '/home/pfff/zulip/zerver/webhooks', 'static/generated/bots'
+2025-02-23 20:57:35.298 ERR  [django.request] Internal Server Error: /devlogin/
+Traceback (most recent call last):
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/backends/jinja2.py", line 74, in render
+    return self.template.render(context)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pfff/zulip/templates/zerver/development/dev_login.html", line 2, in top-level template code
+    {% set entrypoint = "dev-login" %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 2, in top-level template code
+    {% set entrypoint = entrypoint|default("portico") %}
+  File "/home/pfff/zulip/templates/zerver/base.html", line 45, in top-level template code
+    {% block content %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 25, in block 'content'
+    {% include 'zerver/footer.html' %}
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/loaders.py", line 209, in get_source
+    raise TemplateNotFound(
+jinja2.exceptions.TemplateNotFound: 'zerver/footer.html' not found in search paths: '/home/pfff/zulip/templates', '/home/pfff/zulip/zerver/webhooks', 'static/generated/bots'
+2025-02-23 20:57:36.227 ERR  [django.request] Internal Server Error: /devlogin/
+Traceback (most recent call last):
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/backends/jinja2.py", line 74, in render
+    return self.template.render(context)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pfff/zulip/templates/zerver/development/dev_login.html", line 2, in top-level template code
+    {% set entrypoint = "dev-login" %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 2, in top-level template code
+    {% set entrypoint = entrypoint|default("portico") %}
+  File "/home/pfff/zulip/templates/zerver/base.html", line 45, in top-level template code
+    {% block content %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 25, in block 'content'
+    {% include 'zerver/footer.html' %}
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/loaders.py", line 209, in get_source
+    raise TemplateNotFound(
+jinja2.exceptions.TemplateNotFound: 'zerver/footer.html' not found in search paths: '/home/pfff/zulip/templates', '/home/pfff/zulip/zerver/webhooks', 'static/generated/bots'
+2025-02-23 20:57:36.808 ERR  [django.request] Internal Server Error: /devlogin/
+Traceback (most recent call last):
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/django/template/backends/jinja2.py", line 74, in render
+    return self.template.render(context)
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/pfff/zulip/templates/zerver/development/dev_login.html", line 2, in top-level template code
+    {% set entrypoint = "dev-login" %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 2, in top-level template code
+    {% set entrypoint = entrypoint|default("portico") %}
+  File "/home/pfff/zulip/templates/zerver/base.html", line 45, in top-level template code
+    {% block content %}
+  File "/home/pfff/zulip/templates/zerver/portico.html", line 25, in block 'content'
+    {% include 'zerver/footer.html' %}
+  File "/srv/zulip-venv-cache/38138bdc85f3dc478de0f4c92c0ee1bfbf730be5/zulip-py3-venv/lib/python3.10/site-packages/jinja2/loaders.py", line 209, in get_source
+    raise TemplateNotFound(
+jinja2.exceptions.TemplateNotFound: 'zerver/footer.html' not found in search paths: '/home/pfff/zulip/templates', '/home/pfff/zulip/zerver/webhooks', 'static/generated/bots'
+2025-02-24 13:50:13.287 WARN [] Received 502 from push notification bouncer
+2025-02-24 14:01:29.192 ERR  [django.request] Internal Server Error: /accounts/login/social/google
+2025-02-24 14:03:38.178 WARN [] Received 502 from push notification bouncer
