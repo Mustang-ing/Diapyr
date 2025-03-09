@@ -928,7 +928,7 @@ export function try_stream_topic_syntax_text(text: string): string | null {
     }
 
     let syntax_text = "#**" + stream_name;
-    if (stream_topic.topic_name !== undefined) {
+    if (stream_topic.topic_name) {
         syntax_text += ">" + stream_topic.topic_name;
     }
 

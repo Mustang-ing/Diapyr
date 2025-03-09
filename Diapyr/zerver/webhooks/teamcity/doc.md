@@ -38,6 +38,8 @@ TeamCity username to a Zulip user (by matching it to a Zulip user's
 email address or full name), then that Zulip user will receive a direct
 message with the result of their personal build.
 
+![](/static/images/integrations/teamcity/002.png)
+
 ### Related documentation
 
 - [tcWebHooks plugin][1]

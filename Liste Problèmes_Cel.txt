@@ -100,3 +100,6 @@ En partie pour se connecter avec des comptes autres (à retirer ?)
 
 
 inf. Faire un arbre de chaque page avec chaque lien pour voir si tout est bon à la fin !
+
+25. A la fin faudra pas laisser le mode connexion pour dev puisque bah on veut pas que les gens sont dev au début (mais faudra laisser les instructions simple pour le remettre)
+

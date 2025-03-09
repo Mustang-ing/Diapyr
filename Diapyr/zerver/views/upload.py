@@ -342,6 +342,7 @@ def serve_file(
             with transaction.atomic(savepoint=False):
                 ensure_thumbnails(
                     ImageAttachment.objects.select_for_update().get(id=image_attachment.id),
+                    attachment.content_type,
                 )
 
         # Update the path that we are fetching to be the thumbnail

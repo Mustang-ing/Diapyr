@@ -13,7 +13,7 @@ from typing_extensions import override
 from zerver.lib.management import ZulipBaseCommand, check_config
 from zerver.lib.remote_server import (
     PushBouncerSession,
-    prepare_for_registration_transfer_challenge,
+    prepare_for_registration_takeover_challenge,
     send_json_to_push_bouncer,
     send_server_data_to_push_bouncer,
 )
@@ -41,14 +41,9 @@ class Command(ZulipBaseCommand):
             help="Automatically rotate your server's zulip_org_key",
         )
         action.add_argument(
-            "--registration-transfer",
+            "--registration-takeover",
             action="store_true",
-            help="""\
-If your server uses a publicly verifiable SSL certificate for a
-hostname that is already registered for Zulip services, transfers the
-registration to this server by changing the zulip_org_key secret for
-that registration and saving the updated secret in
-/etc/zulip/zulip-secrets.conf.""",
+            help="Overwrite pre-existing registration for the hostname",
         )
         action.add_argument(
             "--deactivate",
@@ -119,8 +114,8 @@ that registration and saving the updated secret in
                 # enough about what happened.
                 return
 
-        if options["registration_transfer"]:
-            org_id, org_key = self.do_registration_transfer_flow(hostname)
+        if options["registration_takeover"]:
+            org_id, org_key = self.do_registration_takeover_flow(hostname)
             # We still want to proceed with a regular request to the registration endpoint,
             # as it'll update the registration with new information such as the contact email.
             request["zulip_org_id"] = org_id
@@ -159,24 +154,24 @@ that registration and saving the updated secret in
                 )
             print("Mobile Push Notification Service registration successfully updated!")
 
-        if options["registration_transfer"]:
+        if options["registration_takeover"]:
             print()
             print(
                 "Make sure to restart the server next by running /home/zulip/deployments/current/scripts/restart-server "
                 "so that the new credentials are reloaded."
             )
 
-    def do_registration_transfer_flow(self, hostname: str) -> tuple[str, str]:
+    def do_registration_takeover_flow(self, hostname: str) -> tuple[str, str]:
         params = {"hostname": hostname}
         response = self._request_push_notification_bouncer_url(
-            "/api/v1/remotes/server/register/transfer", params
+            "/api/v1/remotes/server/register/takeover", params
         )
         verification_secret = response.json()["verification_secret"]
 
         print(
             "Received a verification secret from the service. Preparing to serve it at the verification URL."
         )
-        token_for_push_bouncer = prepare_for_registration_transfer_challenge(verification_secret)
+        token_for_push_bouncer = prepare_for_registration_takeover_challenge(verification_secret)
 
         print("Sending ACK to the service and awaiting completion of verification...")
         response = self._request_push_notification_bouncer_url(
@@ -232,24 +227,6 @@ that registration and saving the updated secret in
                 content_dict = response.json()
             except Exception:
                 raise e
-
-            if (
-                "code" in content_dict
-                and content_dict["code"] == "HOSTNAME_ALREADY_IN_USE_BOUNCER_ERROR"
-            ):
-                docs_url = content_dict["docs_url"]
-                print(
-                    "--------------------------------\n"
-                    "The hostname is already in use by another server. If you control the hostname \n"
-                    "and want to transfer the registration to this server, you can run manage.py register_server \n"
-                    "with the --registration-transfer flag.\n"
-                    "Note that this will invalidate old credentials if another server is still using them.\n"
-                    "\n"
-                    "For more information, see: \n"
-                    "\n"
-                    f"{docs_url}"
-                )
-                raise CommandError
 
             error_message = content_dict["msg"]
             raise CommandError(

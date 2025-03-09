@@ -86,9 +86,9 @@ class DocPageTest(ZulipTestCase):
             )
         return result
 
-    def _test(self, url: str, expected_strings: Sequence[str]) -> "TestHttpResponse":
+    def _test(self, url: str, expected_strings: Sequence[str]) -> None:
         # Test the URL on the root subdomain
-        response = self._check_basic_fetch(
+        self._check_basic_fetch(
             url=url,
             subdomain="",
             expected_strings=expected_strings,
@@ -96,7 +96,7 @@ class DocPageTest(ZulipTestCase):
         )
 
         if not self._is_landing_page(url):
-            return response
+            return
 
         with self.settings(ROOT_DOMAIN_LANDING_PAGE=True):
             # Test the URL on the root subdomain with the landing page setting
@@ -119,7 +119,6 @@ class DocPageTest(ZulipTestCase):
                     ],
                     result,
                 )
-        return response
 
     def test_zephyr_disallows_robots(self) -> None:
         sample_urls = [
@@ -131,6 +130,7 @@ class DocPageTest(ZulipTestCase):
             "/emails/",
             "/errors/404/",
             "/errors/5xx/",
+            "/integrations/",
             "/integrations/",
             "/integrations/bots",
             "/integrations/doc-html/asana",
@@ -320,9 +320,7 @@ class DocPageTest(ZulipTestCase):
         )
 
     def test_integration_doc_endpoints(self) -> None:
-        images_in_docs = set()
-
-        response = self._test(
+        self._test(
             "/integrations/",
             expected_strings=[
                 "native integrations.",
@@ -331,16 +329,10 @@ class DocPageTest(ZulipTestCase):
                 "IFTTT",
             ],
         )
-        page = response.content.decode("utf-8")
-        for image in re.findall(r"/static/images/integrations/(logos/.*)\"", page):
-            images_in_docs.add(image)
 
         for integration in INTEGRATIONS:
             url = f"/integrations/doc-html/{integration}"
-            response = self._test(url, expected_strings=[])
-            doc = response.content.decode("utf-8")
-            for image in re.findall(r"/static/images/integrations/(.*)\"", doc):
-                images_in_docs.add(image)
+            self._test(url, expected_strings=[])
 
         result = self.client_get(
             "/integrations/doc-html/nonexistent_integration",
@@ -348,32 +340,6 @@ class DocPageTest(ZulipTestCase):
             HTTP_X_REQUESTED_WITH="XMLHttpRequest",
         )
         self.assertEqual(result.status_code, 404)
-
-        directory = "static/images/integrations"
-        images_in_dir = {
-            image_path
-            for root, _, files in os.walk(directory)
-            for file in files
-            if "bot_avatars"
-            not in (image_path := os.path.relpath(os.path.join(root, file), directory))
-        }
-
-        self.assertEqual(
-            images_in_dir,
-            images_in_docs,
-            (
-                "\n\nThe following images are not used in documentation and can be removed:\n"
-                + "\n".join(extra_images)
-                if (extra_images := images_in_dir - images_in_docs)
-                else ""
-            )
-            + (
-                "\n\nThe following images are used in documentation but do not exist:\n"
-                + "\n".join(missing_images)
-                if (missing_images := images_in_docs - images_in_dir)
-                else ""
-            ),
-        )
 
     def test_integration_pages_open_graph_metadata(self) -> None:
         og_description = '<meta property="og:description" content="Zulip comes with over'

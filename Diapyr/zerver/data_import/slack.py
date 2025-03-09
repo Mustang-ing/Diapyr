@@ -997,7 +997,7 @@ def channel_message_to_zerver_message(
             uploads_list=uploads_list,
         )
 
-        content = "\n".join([part for part in [content, file_info["content"]] if part != ""])
+        content += file_info["content"]
         has_link = has_link or file_info["has_link"]
 
         has_attachment = file_info["has_attachment"]

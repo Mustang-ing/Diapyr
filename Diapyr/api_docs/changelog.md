@@ -20,21 +20,6 @@ format used by the Zulip server that they are interacting with.
 
 ## Changes in Zulip 10.0
 
-**Feature level 346**
-
-* [Markdown message formatting](/api/message-formatting#links-to-channels-topics-and-messages):
-  Added support for empty string as a valid topic name in syntaxes
-  for linking to topics and messages.
-
-**Feature level 345**
-
-* `POST /remotes/server/register/transfer`,
-  `POST /remotes/server/register/verify_challenge`,
-  `POST /zulip-services/verify/{access_token}/`: Added new API
-  endpoints for transferring Zulip services registrations.
-* `POST /remotes/server/register`: Added new response format for
-  hostnames that are already registere.
-
 **Feature level 344**
 
 * `PATCH /realm`, [`GET /events`](/api/get-events),
